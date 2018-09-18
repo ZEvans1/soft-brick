@@ -8,8 +8,14 @@ import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class MainActivity : AppCompatActivity() {
 
+    var hours : Int = 0
+    var minutes : Int = 0
+    var seconds : Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        var test : String = getString(R.string.current_time, hours, minutes, seconds)
+
 
         verticalLayout {
             padding = dip(30)
@@ -21,7 +27,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             textView {
-                text = "Time will go here"
+                text = test
+                textAlignment = View.TEXT_ALIGNMENT_CENTER
             }
 
             button(R.string.start_button_text){
@@ -33,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             button(R.string.stop_button_text){
                 textSize = 26f
                 onClick {
-                    longToast("Stop pressed")
+                    stopTimer()
                 }
             }
             button(R.string.reset_button_text){
@@ -47,6 +54,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun startTimer() {
         longToast("startTimer() called")
+    }
+
+    private fun stopTimer() {
+        longToast("stopTimer() called")
     }
 
 }
