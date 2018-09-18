@@ -13,19 +13,19 @@ class MainActivity : AppCompatActivity() {
         verticalLayout {
             padding = dip(30)
 
-            button("Start"){
+            button(R.string.start_button_text){
                 textSize = 26f
                 onClick {
                     longToast("Start pressed")
                 }
             }
-            button("Stop"){
+            button(R.string.stop_button_text){
                 textSize = 26f
                 onClick {
                     longToast("Stop pressed")
                 }
             }
-            button("Reset"){
+            button(R.string.reset_button_text){
                 textSize = 26f
                 onClick {
                     longToast("Reset pressed")
