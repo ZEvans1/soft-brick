@@ -15,15 +15,19 @@ class MainActivity : AppCompatActivity() {
             padding = dip(30)
 
             textView {
-                text = "Softbrick"
+                textResource = R.string.app_name
                 textSize = 30f
                 textAlignment = View.TEXT_ALIGNMENT_CENTER
+            }
+
+            textView {
+                text = "Time will go here"
             }
 
             button(R.string.start_button_text){
                 textSize = 26f
                 onClick {
-                    longToast("Start pressed")
+                    startTimer()
                 }
             }
             button(R.string.stop_button_text){
@@ -40,4 +44,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun startTimer() {
+        longToast("startTimer() called")
+    }
+
 }
