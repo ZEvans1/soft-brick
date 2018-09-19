@@ -1,5 +1,6 @@
 package com.example.zachevans.softbrick
 
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
                 textResource = R.string.app_name
                 textSize = 30f
                 textAlignment = View.TEXT_ALIGNMENT_CENTER
+                textColor = Color.DKGRAY
             }
 
             textView {
