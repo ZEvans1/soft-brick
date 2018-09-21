@@ -3,6 +3,7 @@ package com.example.zachevans.softbrick
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.SystemClock.elapsedRealtime
 import android.view.View
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
@@ -12,6 +13,8 @@ class MainActivity : AppCompatActivity() {
     var hours : Int = 0
     var minutes : Int = 0
     var seconds : Int = 0
+    var startTime : Long = 0
+    var endTime : Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,18 +51,27 @@ class MainActivity : AppCompatActivity() {
             button(R.string.reset_button_text){
                 textSize = 26f
                 onClick {
-                    longToast("Reset pressed")
+                    testFunction()
                 }
             }
         }
     }
 
     private fun startTimer() {
-        longToast("startTimer() called")
+        longToast("Timer started")
+        startTime = elapsedRealtime()
+
     }
 
     private fun stopTimer() {
         longToast("stopTimer() called")
+    }
+
+    private fun testFunction(){
+        endTime = elapsedRealtime()
+        var timeDifference = endTime - startTime
+        var timeToChar = timeDifference.toString()
+        longToast(timeToChar)
     }
 
 }
