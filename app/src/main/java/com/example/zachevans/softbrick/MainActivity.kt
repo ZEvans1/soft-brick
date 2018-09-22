@@ -4,9 +4,12 @@ import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock.elapsedRealtime
+import android.util.Log
 import android.view.View
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
+import java.util.*
+import kotlin.concurrent.fixedRateTimer
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     var seconds : Int = 0
     var startTime : Long = 0
     var endTime : Long = 0
+    var isTicking : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,21 +61,37 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     private fun startTimer() {
         longToast("Timer started")
-        startTime = elapsedRealtime()
+        Log.v("button click", "hey I actually was clicked")
+//        isTicking = true
+//        startTime = elapsedRealtime()
+            val fixedTimer = fixedRateTimer(
+                    name = "hello-timer",
+                    initialDelay = 100,
+                    period = 100)
+            {
+                Log.v("timer", "ticking")
+            }
 
+            try {
+                Thread.sleep(1000)
+            } finally {
+                fixedTimer.cancel()
+            }
     }
 
     private fun stopTimer() {
         longToast("stopTimer() called")
+        isTicking = false
     }
 
     private fun testFunction(){
-        endTime = elapsedRealtime()
-        var timeDifference = endTime - startTime
-        var timeToChar = timeDifference.toString()
-        longToast(timeToChar)
+//        endTime = elapsedRealtime()
+//        var timeDifference = (endTime - startTime)/1000
+//        var timeToChar = timeDifference.toString()
+//        longToast(timeToChar)
     }
 
 }
