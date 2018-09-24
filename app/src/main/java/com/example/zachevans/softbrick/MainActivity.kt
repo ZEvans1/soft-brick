@@ -16,13 +16,14 @@ class MainActivity : AppCompatActivity() {
     var hours : Int = 0
     var minutes : Int = 0
     var seconds : Int = 0
-    var startTime : Long = 0
-    var endTime : Long = 0
+    var amount : Int = 0
+//    var startTime : Long = 0
+//    var endTime : Long = 0
     var isTicking : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var test : String = getString(R.string.current_time, hours, minutes, seconds)
+        var test : String = getString(R.string.current_time, hours, minutes, amount)
 
 
         verticalLayout {
@@ -63,20 +64,21 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun startTimer() {
-        longToast("Timer started")
+//        longToast("Timer started")
         Log.v("button click", "hey I actually was clicked")
 //        isTicking = true
 //        startTime = elapsedRealtime()
             val fixedTimer = fixedRateTimer(
                     name = "hello-timer",
                     initialDelay = 100,
-                    period = 100)
+                    period = 1000)
             {
-                Log.v("timer", "ticking")
+                amount++
+                Log.v("clock tick", amount.toString())
             }
 
             try {
-                Thread.sleep(1000)
+                Thread.sleep(10000)
             } finally {
                 fixedTimer.cancel()
             }
